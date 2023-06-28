@@ -1,0 +1,32 @@
+Getting Started
+Please review and ensure these steps have been completed on your local machine already prior to starting the project.
+
+You may use any OS to complete this work, and you may use a Jupyter Notebook to create the Python test scripts, if you’d like.
+
+Create a free Azure account. Use the Outlook email address. Please note you will need to provide a credit card to receive $200.00 in free credits. Your credit card will not be charged unless you exceed this amount. This should be plenty of credits for you to complete your project.
+
+Create an Azure DevOps account (If needed, click "start" free under user licenses.)
+
+Use cloud shell or Install Azure CLI.
+
+Use your favorite text editor or IDE - for this I used VS Code. Install the VS Code extensions for Python and Terraform.
+
+Configuration
+Selenium
+Download the latest Chrome driver. You will also need to add the chromedriver to PATH.
+
+pip install -U selenium
+sudo apt-get install -y chromium-browser
+Execute the /automatedtesting/selenium/login.py file to open the demo site.
+
+JMeter
+Install JMeter.
+
+Use JMeter to open the automatedtesting/jmeter/Starter.jmx file.
+
+Replace the APPSERVICEURL with the URL of your AppService once it's deployed.
+
+Postman
+Install Postman.
+
+Import the automatedtesting/postman/StarterAPIs.json collection into Postman.
