@@ -1,17 +1,11 @@
 name: Azure Pipelines
 
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
 trigger:
-- main
-
-# ToDo: Replace the agent pool name, if you are using Udacity Cloud lab. 
-# Otherwise, comment out the line below. 
-pool: myAgentPool
+- none
 
 variables:
   python.version: '3.7.6'
+  terraform.version: '0.13.4'
   # ToDo: Replace the service connection name as used in the DevOps project settings
   azureServiceConnectionId: 'azureconnection'
   # Project root folder. Point to the folder containing manage.py file.
@@ -21,9 +15,57 @@ variables:
 
 stages:
 #--------------------------------------------#  
+# PROVISIONING STAGE
+#--------------------------------------------# 
+- stage: Provisioning
+  displayName: Provisioning
+  jobs: 
+  - job: ProvisioningAppService
+    displayName: Provisioning AppService
+    steps:
+    - task: InstallSSHKey@0
+      inputs:
+        knownHostsEntry: 'default'
+        sshKeySecureFile: 'id_rsa'
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          ls /home/vsts/work/_temp/
+    - task: TerraformInstaller@0
+      displayName: Install Terraform
+      inputs:
+        terraformVersion: '0.13.4'
+    - task: TerraformTaskV1@0
+      displayName: Terraform Init
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'EnsuringQualityReleasesSC'
+        backendAzureRmResourceGroupName: 'project3rg'
+        backendAzureRmStorageAccountName: 'project3sa'
+        backendAzureRmContainerName: 'terraform-state'
+        backendAzureRmKey: 'ensuring-quality-releases.tfstate'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+    - task: TerraformTaskV1@0
+      displayName: Terraform Plan
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+        environmentServiceNameAzureRM: 'EnsuringQualityReleasesSC'
+    - task: TerraformTaskV1@0
+      displayName: Terraform Validate and Apply  
+      inputs:
+        provider: 'azurerm'
+        command: 'apply'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+        environmentServiceNameAzureRM: 'EnsuringQualityReleasesSC'
+#--------------------------------------------#  
 # BUILD STAGE
 #--------------------------------------------#    
 - stage: Build
+  displayName: Building
   jobs:
   - job: BuildInfrastructure
     steps:
@@ -42,36 +84,17 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         backendServiceArm: '$(azureServiceConnectionId)'
         backendAzureRmResourceGroupName: ''
         backendAzureRmStorageAccountName: ''
         backendAzureRmContainerName: ''
         backendAzureRmKey: 'test.terraform.tfstate'
-
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
       displayName: Terraform validate
       inputs:
         provider: 'azurerm'
         command: 'validate'
-
-    # OPTIONAL - This step is needed only if your Terraform VM uses an SSH key pair for login and you want your pipeline agent to connect to it. 
-    # Generate an SSH key pair in your local/AZ Cloud shell. Use the public key in the Terraform VM module. 
-    # Install public key and private key file to the pipeline agent, using the task below. 
-    # ToDo: Change the inputs value below
-    # - task: InstallSSHKey@0
-    #   inputs:
-    #     knownHostsEntry: 'KNOWN_HOSTS_STRING' # variable value
-    #     sshPublicKey: 'PUBLIC_KEY'            # variable value
-    #     sshKeySecureFile: 'id_rsa' # Use secure file feature in the pipeline library UI to save the "id_rsa" file, as mentioned here: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/secure-files?view=azure-devops#add-a-secure-file
-    
-    # - task: DownloadSecureFile@1
-    #  name: udacity_public_key
-    #  displayName: 
-    #  inputs:
-    #   secureFile: 
-
-    
     # Run Terraform Apply
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
       displayName: Terraform apply
