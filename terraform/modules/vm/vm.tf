@@ -17,14 +17,15 @@ resource "azurerm_linux_virtual_machine" "VM" {
   resource_group_name   = var.resource_group
   size                  = "Basic_A1"
   admin_username        = var.admin_username
+  network_interface_ids = var.network_interface_ids
   os_disk {
     caching           = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
-  admin_ssh_key {
-    username   = var.admin_username
-    public_key = file("/home/vsts/work/_temp/id_rsa.pub")
-  }
+#  admin_ssh_key {
+#    username   = var.admin_username
+#    public_key = file("/home/vsts/work/_temp/id_rsa.pub")
+#  }
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"

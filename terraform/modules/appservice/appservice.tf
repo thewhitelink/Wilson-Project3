@@ -4,10 +4,7 @@ resource "azurerm_service_plan" "test" {
   resource_group_name = "${var.resource_group}"
   os_type             = "Linux"
   
-  sku {
-    tier = "Basic"
-    size = "B1"
-  }
+  sku_name = "B1"
 }
 
 resource "azurerm_linux_web_app" "test" {
