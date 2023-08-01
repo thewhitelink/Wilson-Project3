@@ -52,22 +52,21 @@ module "publicip" {
   resource_type    = "publicip"
   resource_group   = "${module.resource_group.resource_group_name}"
 }
-module "public_ip_address_id" {
-  source           = "../../modules/public_ip_address_id"
-  location         = "${var.location}"
-  application_type = "${var.application_type}"
-  resource_type    = "public_ip_address"
-  resource_group   = "${module.resource_group.resource_group_name}"
-}
+#module "public_ip_address_id" {
+#  source           = "../../modules/public_ip_address_id"
+#  location         = "${var.location}"
+#  application_type = "${var.application_type}"
+#  resource_type    = "public_ip_address"
+#  resource_group   = "${module.resource_group.resource_group_name}"
+#}
 
 module "virtual_machine" {
   source               = "../../modules/vm"
-  location             = var.location
-  resource_group       = module.resource_group.resource_group_name
-  application_type     = var.application_type
+  location             = "${var.location}"
+  resource_group       = "${var.resource_group}"
+  application_type     = "${var.application_type}"
   resource_type        = "VM"
-#  public_ip_address_id = module.public_ip_address_id
-#  publicip             = module.publicip
-#  public_subnet_id     = module.network.subnet_id_test
+  public_ip_address_id = "${module.publicip.public_ip_address_id}"
+  public_subnet_id     = "${module.network.subnet_id_test}"
   admin_username       = "adminuser"
 }

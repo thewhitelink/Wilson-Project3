@@ -32,13 +32,17 @@ variable "virtual_network_name" {
 }
 variable "address_space" {
     description = ""
-    default = "10.5.0.0/16"
+    default = ["10.0.0.0/16"]
 }
 variable "address_prefix_test" {
     description = ""
-    default = "10.5.1.0/24"
+    default = ["10.0.1.0/24"]
 }
-#variable "" {
+#variable "public_ip_address_id" {
 #    description = ""
+#    default = ""
+#}
+#variable "network_interface_ids" {
+#    description = "NIC ID"
 #    default = ""
 #}
