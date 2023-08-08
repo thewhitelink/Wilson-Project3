@@ -45,7 +45,7 @@ stages:
         backendAzureRmResourceGroupName: 'project3rg'
         backendAzureRmStorageAccountName: 'sa129107626'
         backendAzureRmContainerName: 'terraform-state'
-        backendAzureRmKey: 'ensuring-quality-releases.tfstate'
+        backendAzureRmKey: 'test.terraform.tfstate'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
     - task: TerraformTaskV1@0
       displayName: Terraform Plan
@@ -53,14 +53,14 @@ stages:
         provider: 'azurerm'
         command: 'plan'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
-        environmentServiceNameAzureRM: 'EnsuringQualityReleasesSC'
+        environmentServiceNameAzureRM: 'adoconnection'
     - task: TerraformTaskV1@0
       displayName: Terraform Validate and Apply  
       inputs:
         provider: 'azurerm'
         command: 'apply'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
-        environmentServiceNameAzureRM: 'EnsuringQualityReleasesSC'
+        environmentServiceNameAzureRM: 'adoconnection'
 #--------------------------------------------#  
 # BUILD STAGE
 #--------------------------------------------#    
