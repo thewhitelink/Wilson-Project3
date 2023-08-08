@@ -21,8 +21,7 @@ stages:
   displayName: Provisioning
   jobs: 
   - job: ProvisioningAppService
-    pool:
-        vmImage: 'Ubuntu-18.04'
+    pool: myAgent
     displayName: Provisioning AppService
     steps:
     # - task: InstallSSHKey@0
@@ -70,8 +69,7 @@ stages:
   displayName: Building
   jobs:
   - job: BuildInfrastructure
-    pool:
-      vmImage: 'Ubuntu-18.04'
+    pool: myAgent
     steps:
     #--------------------------------------------#  
     # Use Terraform to create the Infrastructure      
@@ -205,8 +203,7 @@ stages:
   # Deploy FakeRestAPI Web App
   # ToDo: Provide <environment name> you created in your DevOps project
   - deployment: FakeRestAPI
-    pool:
-      vmImage: 'Ubuntu-18.04'      
+    pool: myAgent    
     environment: '$(environmentName)'   # ToDo
     strategy:
       runOnce:
