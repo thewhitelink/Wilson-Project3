@@ -43,7 +43,7 @@ stages:
         command: 'init'
         backendServiceArm: 'EnsuringQualityReleasesSC'
         backendAzureRmResourceGroupName: 'project3rg'
-        backendAzureRmStorageAccountName: 'project3sa'
+        backendAzureRmStorageAccountName: 'sa129107626'
         backendAzureRmContainerName: 'terraform-state'
         backendAzureRmKey: 'ensuring-quality-releases.tfstate'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
@@ -86,9 +86,9 @@ stages:
         command: 'init'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         backendServiceArm: '$(azureServiceConnectionId)'
-        backendAzureRmResourceGroupName: ''
-        backendAzureRmStorageAccountName: ''
-        backendAzureRmContainerName: ''
+        backendAzureRmResourceGroupName: 'project3rg'
+        backendAzureRmStorageAccountName: 'sa129107626'
+        backendAzureRmContainerName: 'terraform-state'
         backendAzureRmKey: 'test.terraform.tfstate'
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
       displayName: Terraform validate
@@ -203,7 +203,7 @@ stages:
   - deployment: FakeRestAPI
     pool:
       vmImage: 'Ubuntu-18.04'      
-    environment: <environment name>   # ToDo
+    environment: '$(environmentName)'   # ToDo
     strategy:
       runOnce:
         deploy:
