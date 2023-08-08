@@ -41,7 +41,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        backendServiceArm: 'EnsuringQualityReleasesSC'
+        backendServiceArm: 'adoconnection'
         backendAzureRmResourceGroupName: 'project3rg'
         backendAzureRmStorageAccountName: 'sa129107626'
         backendAzureRmContainerName: 'terraform-state'
