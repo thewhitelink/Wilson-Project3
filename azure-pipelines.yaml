@@ -45,7 +45,7 @@ stages:
         backendServiceArm: 'adoconnection'
         backendAzureRmResourceGroupName: 'project3rg'
         backendAzureRmStorageAccountName: 'sa129107626'
-        backendAzureRmContainerName: 'terraform-state'
+        backendAzureRmContainerName: 'container'
         backendAzureRmKey: 'test.terraform.tfstate'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
     - task: TerraformTaskV1@0
@@ -90,7 +90,7 @@ stages:
         backendServiceArm: '$(azureServiceConnectionId)'
         backendAzureRmResourceGroupName: 'project3rg'
         backendAzureRmStorageAccountName: 'sa129107626'
-        backendAzureRmContainerName: 'terraform-state'
+        backendAzureRmContainerName: 'container'
         backendAzureRmKey: 'test.terraform.tfstate'
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
       displayName: Terraform validate
