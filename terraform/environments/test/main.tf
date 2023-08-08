@@ -52,14 +52,6 @@ module "publicip" {
   resource_type    = "publicip"
   resource_group   = "${module.resource_group.resource_group_name}"
 }
-#module "public_ip_address_id" {
-#  source           = "../../modules/public_ip_address_id"
-#  location         = "${var.location}"
-#  application_type = "${var.application_type}"
-#  resource_type    = "public_ip_address"
-#  resource_group   = "${module.resource_group.resource_group_name}"
-#}
-
 module "virtual_machine" {
   source               = "../../modules/vm"
   location             = "${var.location}"
