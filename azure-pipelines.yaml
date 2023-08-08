@@ -21,6 +21,8 @@ stages:
   displayName: Provisioning
   jobs: 
   - job: ProvisioningAppService
+    pool:
+        vmImage: 'Ubuntu-18.04'
     displayName: Provisioning AppService
     steps:
     # - task: InstallSSHKey@0
@@ -68,6 +70,8 @@ stages:
   displayName: Building
   jobs:
   - job: BuildInfrastructure
+    pool:
+      vmImage: 'Ubuntu-18.04'
     steps:
     #--------------------------------------------#  
     # Use Terraform to create the Infrastructure      
