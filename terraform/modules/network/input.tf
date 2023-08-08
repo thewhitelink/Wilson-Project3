@@ -14,7 +14,5 @@ variable "application_type" {
 variable "resource_type" {
     type = string
 }
-variable "address_prefix_test" {
-    type = string
-}
+variable "address_prefix_test" {}
 

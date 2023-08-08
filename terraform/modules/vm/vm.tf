@@ -15,8 +15,10 @@ resource "azurerm_linux_virtual_machine" "VM" {
   name                  = "${var.resource_type}-${var.application_type}"
   location              = "${var.location}"
   resource_group_name   = "${var.resource_group}"
-  size                  = "Basic_A1"
+  size                  = "Standard_B2s"
+  disable_password_authentication = "false"
   admin_username        = "${var.admin_username}"
+  admin_password        = "Password123!"
   network_interface_ids = [
     azurerm_network_interface.int.id
   ]

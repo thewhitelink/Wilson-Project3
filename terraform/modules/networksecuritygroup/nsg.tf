@@ -11,11 +11,11 @@ resource "azurerm_network_security_group" "nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "5000"
-    source_address_prefix      = "${var.address_prefix_test}"
+    source_address_prefix      = "10.0.1.0/24"
     destination_address_prefix = "*"
   }
   security_rule {
-        name                       = "SSH"
+        name                       = "SSHIn"
         priority                   = 1001
         direction                  = "Inbound"
         access                     = "Allow"
@@ -26,7 +26,7 @@ resource "azurerm_network_security_group" "nsg" {
         destination_address_prefix = "*"
     }
   security_rule {
-        name                       = "SSH"
+        name                       = "SSHOut"
         priority                   = 1002
         direction                  = "Outbound"
         access                     = "Allow"
