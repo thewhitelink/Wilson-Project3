@@ -247,7 +247,7 @@ stages:
       runOnce:
         deploy:
           steps:
-          - download: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium'
+          - download: current
             artifact: drop-ui-tests
             
           - task: Bash@3
