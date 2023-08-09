@@ -19,3 +19,29 @@ resource "azurerm_linux_web_app" "test" {
     always_on = false
   }
 }
+
+data "azurerm_monitor_action_group" "existing"{
+  name                = "alerts"
+  resource_group_name = "project3rg"
+}
+
+resource "azurerm_monitor_metric_alert" "main" {
+  name                = "metric-alert"
+  resource_group_name = "project3rg"
+  scopes              = [azurerm_linux_web_app.test.id]
+  target_resource_type = "Microsoft.Web/sites"
+  description         = "Metric alert"
+  severity            = 2
+
+  criteria {
+    metric_namespace = "Microsoft.Web/sites"
+    metric_name      = "Http4xx"
+    aggregation      = "Total"
+    operator         = "GreaterThan"
+    threshold        = 0
+  }
+
+  action {
+    action_group_id = data.azurerm_monitor_action_group.existing.id
+  }
+}
