@@ -17,7 +17,7 @@ resource "azurerm_linux_virtual_machine" "VM" {
   resource_group_name   = "${var.resource_group}"
   size                  = "Standard_B2s"
   disable_password_authentication = "false"
-  admin_username        = "${var.admin_username}"
+  admin_username        = "admin"
   admin_password        = "Password123!"
   network_interface_ids = [
     azurerm_network_interface.int.id
