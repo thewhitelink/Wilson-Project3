@@ -241,7 +241,7 @@ stages:
     environment:
       name: test #updated
       resourceType: VirtualMachine
-    #  tags: selenium
+      tags: selenium
     strategy:
       runOnce:
         deploy:
