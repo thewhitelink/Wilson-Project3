@@ -213,7 +213,7 @@ stages:
             displayName: 'Deploy Azure Web App'
             inputs:
               azureSubscription: 'adoconnection'     # ToDo
-              appName: '${var.application_type}-${var.resource_type}'               # ToDo
+              appName: 'EQR-AppService'               # ToDo
               appType: webApp
               package: $(Pipeline.Workspace)/<artifact>/<archiveFile>       # ToDo: Use the published zip artifact. 
           #--------------------------------------------#    
