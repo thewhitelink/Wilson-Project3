@@ -157,7 +157,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive UI Tests'
       inputs:
-        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium'
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/s/automatedtesting/selenium'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-uitests.zip'
@@ -248,7 +248,7 @@ stages:
         deploy:
           steps:
           - download: current
-            artifact: drop-ui-tests 
+            artifact: drop-ui-tests
             
           - task: Bash@3
             inputs:
