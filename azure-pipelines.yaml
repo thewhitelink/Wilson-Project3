@@ -32,7 +32,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          ls /home/vsts/work/_temp/
+          ls /home/_work/_temp/
     - task: TerraformInstaller@0
       displayName: Install Terraform
       inputs:
