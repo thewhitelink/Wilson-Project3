@@ -227,7 +227,7 @@ stages:
                 unzip -o $(Build.BuildId)-perftests.zip
                 ./apache-jmeter-5.2.1/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
                 cat jmeter.log                                                                           # ToDo: Write your commands
-              workingDirectory: $(Pipeline.Workspace)/<artifact>            # ToDo: Use the artifact name from the task above
+              workingDirectory: $(Pipeline.Workspace)/drop-perftests            # ToDo: Use the artifact name from the task above
               
   #--------------------------------------------#  
   # Selenium | Functional UI Tests
@@ -235,7 +235,7 @@ stages:
   - deployment: VMDeploy
     displayName: Selenium Tests
     environment:
-      name: selenium-test-vm
+      name: VM-EQR
       resourceType: VirtualMachine
       tags: selenium
     strategy:
@@ -275,3 +275,12 @@ stages:
                 echo "Starting Selenium Tests"
                 python3 add_remove_from_cart.py >> selenium.log
                 echo "Completed Selenium Tests. Check selenium.log for results."
+
+            # - task: Bash@3
+            #   inputs:
+            #     targetType: 'inline'
+            #     script: |
+            #       #! //bin/bash
+
+            #       echo "Displaying selenium.log"
+            #       cat /home/christian/app/selenium*.utf8.log
