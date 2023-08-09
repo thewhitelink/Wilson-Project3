@@ -38,6 +38,10 @@ variable "address_prefix_test" {
     description = ""
     default = ["10.0.1.0/24"]
 }
+variable "resource_type" {
+    description = "type of resource"
+    default = "AppService"
+}
 #variable "public_ip_address_id" {
 #    description = ""
 #    default = ""
