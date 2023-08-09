@@ -20,10 +20,10 @@ resource "azurerm_linux_web_app" "test" {
   }
 }
 
-data "azurerm_monitor_action_group" "existing"{
-  name                = "alerts"
-  resource_group_name = "project3rg"
-}
+# data "azurerm_monitor_action_group" "existing"{
+#   name                = "alerts"
+#   resource_group_name = "project3rg"
+# }
 
 # resource "azurerm_monitor_metric_alert" "main" {
 #   name                = "metric-alert"
