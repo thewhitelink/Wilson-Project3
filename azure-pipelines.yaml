@@ -21,7 +21,7 @@ stages:
   displayName: Provisioning
   jobs: 
   - job: ProvisioningAppService
-    pool: myAgent
+    pool: myPool
     displayName: Provisioning AppService
     steps:
     # - task: InstallSSHKey@0
@@ -69,7 +69,7 @@ stages:
   displayName: Building
   jobs:
   - job: BuildInfrastructure
-    pool: myAgent
+    pool: myPool
     steps:
     #--------------------------------------------#  
     # Use Terraform to create the Infrastructure      
@@ -204,7 +204,7 @@ stages:
   # Deploy FakeRestAPI Web App
   # ToDo: Provide <environment name> you created in your DevOps project
   - deployment: FakeRestAPI
-    pool: myAgent    
+    pool: myPool    
     environment: '$(environmentName)'   # ToDo
     strategy:
       runOnce:
