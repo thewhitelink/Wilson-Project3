@@ -232,10 +232,10 @@ stages:
   #--------------------------------------------#  
   # Selenium | Functional UI Tests
   # ToDo: 
-  - deployment: selenium-test-vm
+  - deployment: Selenium
     displayName: Selenium Tests
     environment:
-      name: VM-EQR
+      name: selenium-test-vm
       resourceType: VirtualMachine
       tags: selenium
     strategy:
