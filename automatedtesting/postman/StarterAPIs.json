@@ -35,11 +35,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://dummy.restapiexample.com/api/v1/create",
+					"raw": "http://dummyjson.com/",
 					"protocol": "http",
 					"host": [
-						"dummy",
-						"restapiexample",
+						"dummyjson",
 						"com"
 					],
 					"path": [
@@ -71,11 +70,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://dummy.restapiexample.com/api/v1/employees",
+					"raw": "http://dummyjson.com/employees",
 					"protocol": "http",
 					"host": [
-						"dummy",
-						"restapiexample",
+						"dummyjson",
 						"com"
 					],
 					"path": [

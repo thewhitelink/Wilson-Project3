@@ -1,0 +1,42 @@
+name: Azure Pipelines
+
+trigger:
+- none
+
+variables:
+  python.version: '3.7.6'
+  terraform.version: '0.13.4'
+  # ToDo: Replace the service connection name as used in the DevOps project settings
+  azureServiceConnectionId: 'adoconnection'
+  # Project root folder. Point to the folder containing manage.py file.
+  projectRoot: $(System.DefaultWorkingDirectory)
+  # Environment name
+  environmentName: 'test'
+
+stages:
+  -stage: Destroy
+   displayName: Destroy
+   jobs:
+   - job: Destroy
+     pool: myPool
+     displayName: Terraform Destroy
+   - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          ls /home/_work/_temp/
+    - task: TerraformInstaller@0
+      displayName: Install Terraform
+      inputs:
+        terraformVersion: '1.5.4'
+    - task: TerraformTaskV4@4
+      displayName: Terraform Destroy
+      inputs:
+        provider: 'azurerm'
+        command: 'destroy'
+        backendServiceArm: 'adoconnection'
+        backendAzureRmResourceGroupName: 'project3rg'
+        backendAzureRmStorageAccountName: 'sa129107626'
+        backendAzureRmContainerName: 'container'
+        backendAzureRmKey: 'test.terraform.tfstate'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
