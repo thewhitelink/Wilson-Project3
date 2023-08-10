@@ -237,7 +237,7 @@ stages:
   # ToDo: 
   - deployment: Selenium
     pool: myPool
-    displayName: Selenium Tests
+    displayName: Selenium Dependencies
     environment:
       name: '$(environmentName)' #updated
     strategy:
