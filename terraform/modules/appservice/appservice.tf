@@ -18,7 +18,6 @@ resource "azurerm_windows_web_app" "test" {
   }
   site_config {
     always_on = false
-    dotnet_framework_version = "v4.0"
     }
   }
   #lifecycle {
