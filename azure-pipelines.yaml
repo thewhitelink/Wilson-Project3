@@ -236,10 +236,10 @@ stages:
   # Selenium | Functional UI Tests
   # ToDo: 
   - deployment: Selenium
+    pool: myPool
     displayName: Selenium Tests
     environment:
       name: '$(environmentName)' #updated
-      resourceType: VirtualMachine
     strategy:
       runOnce:
         deploy:
@@ -274,18 +274,27 @@ stages:
                 fi
                 
                 mkdir azagent;cd azagent;curl -fkSL -o vstsagent.tar.gz https://vstsagentpackage.azureedge.net/agent/3.225.0/vsts-agent-linux-x64-3.225.0.tar.gz;tar -zxvf vstsagent.tar.gz; if [ -x "$(command -v systemctl)" ]; then ./config.sh --environment --environmentname "test" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/dwilson0779/ --work _work --projectname 'project-3-pipelines' --auth PAT --token wbaptihiyj44szo5n4xytlq5i5lsqlqov52kynr2ulikxqrly2bq --runasservice; sudo ./svc.sh install; sudo ./svc.sh start; else ./config.sh --environment --environmentname "test" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/dwilson0779/ --work _work --projectname 'project-3-pipelines' --auth PAT --token wbaptihiyj44szo5n4xytlq5i5lsqlqov52kynr2ulikxqrly2bq; ./run.sh; fi              
-          - download: current
-            displayName: 'Download Selenium'
-            artifact: uitests.zip
-          - task: Bash@3
-            displayName: UI Tests
-            inputs:
-              targetType: 'inline'
-              script: |
-                export PATH=$PATH:/home/testuser/app
-                echo "Starting Selenium Tests"
-                python3 login.py >> selenium.log
-                echo "Completed Selenium Tests. Check selenium.log for results."
+  - deployment: Selenium
+    displayName: Selenium Tests
+    environment: 
+        name: '$(environmentName)'
+        resourceType: VirtualMachine
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+            - download: current
+              displayName: 'Download Selenium'
+              artifact: uitests
+            - task: Bash@3
+              displayName: UI Tests
+              inputs:
+                targetType: 'inline'
+                script: |
+                  export PATH=$PATH:/home/testuser/app
+                  echo "Starting Selenium Tests"
+                  python3 login.py >> selenium.log
+                  echo "Completed Selenium Tests. Check selenium.log for results."
 
             # - task: Bash@3
             #   inputs:
