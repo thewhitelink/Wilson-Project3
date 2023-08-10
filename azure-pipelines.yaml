@@ -159,9 +159,9 @@ stages:
         rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium'
         includeRootFolder: false
         archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/s/$(Build.BuildId)-uitests.zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/s/uitests.zip'
     # Selenium Test Suite - Publish the package  
-    - publish: $(Build.ArtifactStagingDirectory)/s/$(Build.BuildId)-uitests.zip   # Same as the archiveFile artifact above. 
+    - publish: $(Build.ArtifactStagingDirectory)/s/uitests.zip   # Same as the archiveFile artifact above. 
       displayName: 'Upload Package'
       artifact: drop-uitests
         #--------------------------------------------#    
@@ -247,9 +247,9 @@ stages:
           
           steps:
           - download: current
-            artifact: drop-ui-tests
-            
+            artifact: ui-tests  
           - task: Bash@3
+            displayName: UI Tests
             inputs:
               targetType: 'inline'
               script: |           
@@ -265,9 +265,9 @@ stages:
                 if [ ! -d "$DIR" ]; then
                     mkdir app
                 fi
-                mv '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-uitests.zip' app
+                mv '$(Pipeline.Workspace)/uitests.zip' app
                 cd app
-                unzip -o $(Build.BuildId)-uitests.zip
+                unzip -o $(Pipeline.Workspace)uitests.zip
                 FILE=/home/testuser/app/chromedriver_linux64.zip
                 if [ ! -f "$FILE" ]; then
                     LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
