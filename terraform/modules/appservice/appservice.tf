@@ -18,10 +18,14 @@ resource "azurerm_linux_web_app" "test" {
   }
   site_config {
     always_on = false
-        application_stack {
-          current_stack = "dotnet"
-          dotnet_version = "v6.0"
+    dotnet_framework_version = "v6.0"
     }
+  }
+  lifecycle {
+    ignore_changes = [
+      app_settings["WEBSITE_RUN_FROM_PACKAGE"],
+    ]
+    
   }
 
 }
