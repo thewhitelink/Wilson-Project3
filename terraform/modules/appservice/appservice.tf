@@ -14,6 +14,8 @@ resource "azurerm_windows_web_app" "test" {
 
   app_settings = {
     "WEBSITE_RUN_FROM_PACKAGE" = 0
+    "SCM_DO_BUILD_DURING_DEPLOYMENT" = true
+    "WEBSITE_ENABLE_SYNC_UPDATE_SITE" = true
   }
   site_config {
     always_on = false
