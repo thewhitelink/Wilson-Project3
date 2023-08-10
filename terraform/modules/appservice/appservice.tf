@@ -18,11 +18,12 @@ resource "azurerm_linux_web_app" "test" {
   }
   site_config {
     always_on = false
+        application_stack {
+          current_stack = "dotnet"
+          dotnet_version = "v6.0"
+    }
   }
-  application_stack {
-    current_stack = "dotnet"
-    dotnet_version = "v6.0"
-  }
+
 }
 
 # data "azurerm_monitor_action_group" "existing"{
