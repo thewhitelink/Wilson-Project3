@@ -267,7 +267,7 @@ stages:
                 fi
                 mv '$(Pipeline.Workspace)/uitests.zip' app
                 cd app
-                unzip -o $(Pipeline.Workspace)uitests.zip
+                unzip -o $(Pipeline.Workspace)/uitests.zip
                 FILE=/home/testuser/app/chromedriver_linux64.zip
                 if [ ! -f "$FILE" ]; then
                     LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
