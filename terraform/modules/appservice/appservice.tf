@@ -21,14 +21,12 @@ resource "azurerm_linux_web_app" "test" {
     dotnet_framework_version = "v6.0"
     }
   }
-  lifecycle {
-    ignore_changes = [
-      app_settings["WEBSITE_RUN_FROM_PACKAGE"],
-    ]
+  #lifecycle {
+  #  ignore_changes = [
+  #    app_settings["WEBSITE_RUN_FROM_PACKAGE"],
+  #  ]
     
-  }
-
-}
+ # }
 
 # data "azurerm_monitor_action_group" "existing"{
 #   name                = "alerts"
