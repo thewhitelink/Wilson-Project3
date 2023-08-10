@@ -35,13 +35,16 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/{{version}}/create",
+					"raw": "http://dummy.restapiexample.com/api/v1/create",
+					"protocol": "http",
 					"host": [
-						"{{url}}"
+						"dummy",
+						"restapiexample",
+						"com"
 					],
 					"path": [
 						"api",
-						"{{version}}",
+						"v1",
 						"create"
 					]
 				}
@@ -68,130 +71,19 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/{{version}}/employees",
+					"raw": "http://dummy.restapiexample.com/api/v1/employees",
+					"protocol": "http",
 					"host": [
-						"{{url}}"
+						"dummy",
+						"restapiexample",
+						"com"
 					],
 					"path": [
 						"api",
-						"{{version}}",
+						"v1",
 						"employees"
 					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Employee",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "a6a01b07-1cfb-42b1-975d-0dc0ab02c8f9",
-						"exec": [
-							"pm.test(\"Successful response\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"success\");",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/api/{{version}}/employee/{{id}}",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"{{version}}",
-						"employee",
-						"{{id}}"
-					]
-				},
-				"description": "Get a single employee data"
-			},
-			"response": []
-		},
-		{
-			"name": "Update Employee",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "4b19fdaf-e717-4173-964b-544000cb6286",
-						"exec": [
-							"pm.test(\"Successful response\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"success\");",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"{{new_name}}\",\n    \"salary\": \"{{new_salary}}\",\n    \"age\": \"{{new_age}}\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/api/{{version}}/update/{{id}}",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"{{version}}",
-						"update",
-						"{{id}}"
-					]
-				},
-				"description": "Update an employee record"
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Employee",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "7eb84325-7026-4b38-85b4-eb28adbf344e",
-						"exec": [
-							"pm.test(\"Successful response\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"success\");",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/api/{{version}}/delete/{{id}}",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"{{version}}",
-						"delete",
-						"{{id}}"
-					]
-				},
-				"description": "Delete an employee record"
 			},
 			"response": []
 		}
