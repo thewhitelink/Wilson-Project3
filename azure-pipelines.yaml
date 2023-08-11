@@ -214,7 +214,7 @@ stages:
               azureSubscription: 'Visual Studio Enterprise Account(f70deb8c-0341-408c-bc49-bee8e476e697)'     # ToDo
               AppName: 'EQR-AppService'               # ToDo
               appType: webApp
-              package: '$(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip'       # ToDo: Use the published zip artifact. 
+              package: '$(Pipeline.Workspace)/drop-fakerestapi/fakerestapi.zip'       # ToDo: Use the published zip artifact. 
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service
           - task: CmdLine@2
