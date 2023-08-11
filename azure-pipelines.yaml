@@ -281,11 +281,10 @@ stages:
 - stage: RunTestingSuite
   jobs:
   - deployment: SeleniumTests
-    pool:
+    pool: myPool
     displayName: Selenium Tests
     environment: 
         name: '$(environmentName)'
-        resourceType: VirtualMachine
     strategy:
         runOnce:
           deploy:
