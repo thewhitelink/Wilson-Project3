@@ -1,7 +1,7 @@
 name: Azure Pipelines
 
 trigger:
-- none
+- main
 
 variables:
   python.version: '3.7.6'
@@ -14,17 +14,12 @@ variables:
   environmentName: 'test'
 
 stages:
-  -stage: Destroy
-   displayName: Destroy
+  -stage: Init
+   displayName: TerraformInitialize
    jobs:
-   - job: Destroy
+   - job: TerraformInit
      pool: myPool
-     displayName: Terraform Destroy
-   - task: Bash@3
-      inputs:
-        targetType: 'inline'
-        script: |
-          ls /home/_work/_temp/
+     displayName: 'Terraform Initialize'
     - task: TerraformInstaller@0
       displayName: Install Terraform
       inputs:
@@ -33,10 +28,23 @@ stages:
       displayName: Terraform Destroy
       inputs:
         provider: 'azurerm'
-        command: 'destroy'
+        command: 'init'
         backendServiceArm: 'adoconnection'
         backendAzureRmResourceGroupName: 'project3rg'
         backendAzureRmStorageAccountName: 'sa129107626'
         backendAzureRmContainerName: 'container'
         backendAzureRmKey: 'test.terraform.tfstate'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+      displayName: Terraform validate
+      inputs:
+        provider: 'azurerm'
+        command: 'validate'
+    
+    - task: TerraformTaskV3@3
+      displayName: Terraform destroy
+      inputs:
+        provider: 'azurerm'
+        command: 'destroy'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
