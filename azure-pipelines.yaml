@@ -187,9 +187,9 @@ stages:
         rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/Starter.jmx'
         includeRootFolder: false
         archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/drop-perftests/$(Build.BuildId)-perftests.zip'
+        archiveFile: '/home/myAgent/_work/1/drop-perftests/$(Build.BuildId)-perftests.zip'
     # JMeter Test Suite - Publish    
-    - publish: '$(Build.ArtifactStagingDirectory)/drop-perftests/$(Build.BuildId)-perftests.zip'
+    - publish: '/home/myAgent/_work/1/drop-perftests/$(Build.BuildId)-perftests.zip'
       displayName: 'Upload Package'
       artifact: drop-perftests
 
@@ -268,8 +268,8 @@ stages:
                 if [ ! -d "$DIR" ]; then
                     mkdir app
                 fi
-                mv '/home/myAgent/_work/1/drop-uitests/$(Build.BuildId)-drop-uitests.zip' app
-                cd app
+                mv '/home/myAgent/_work/1/drop-uitests/$(Build.BuildId)-drop-uitests.zip' /home/myAgent/app
+                cd /home/myAgent/app
                 unzip -o $(Build.BuildId)-uitests.zip
                 FILE=/home/myAgent/app/chromedriver_linux64.zip
                 if [ ! -f "$FILE" ]; then
@@ -301,7 +301,7 @@ stages:
                 targetType: 'inline'
                 script: |
                   export PATH=$PATH:/home/myAgent/app
-                  cd /home/myAgent/_work/1/drop-uitests/
+                  cd /home/myAgent/app/_work/1/drop-uitests/
                   echo "Starting Selenium Tests"
                   python3 login.py >> selenium.log
                   echo "Completed Selenium Tests. Check selenium.log for results."
