@@ -266,7 +266,7 @@ stages:
                 sudo apt-get install -y unzip wget libxss1 libappindicator1 libindicator 7 xvfb
                 mdir /home/myAgent/app/_work/1/drop-uitests/app
                 mv /home/myAgent/app/_work/1/drop-uitests/$(Build.BuildId)-uitests.zip /home/myAgent/app
-
+                cd /home/myAgent/app
                 unzip -o $(Build.BuildId)-uitests.zip
 
                 FILE=/home/myAgent/app/chromedriver_linux64.zip
@@ -299,6 +299,7 @@ stages:
                 targetType: 'inline'
                 script: |
                   export PATH=$PATH:/home/myAgent/app/
+                  cd /home/myAgent/app
                   echo "Starting Selenium Tests"
                   python3 login.py >> selenium.log
                   echo "Completed Selenium Tests. Check selenium.log for results."
