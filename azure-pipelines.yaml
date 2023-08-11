@@ -187,9 +187,9 @@ stages:
         rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/Starter.jmx'
         includeRootFolder: false
         archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/drop-perftests/$(Build.BuildId)-perftests.zip'
     # JMeter Test Suite - Publish    
-    - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip
+    - publish: $(Build.ArtifactStagingDirectory)/drop-perftests/$(Build.BuildId)-perftests.zip
       displayName: 'Upload Package'
       artifact: drop-perftests
 
@@ -222,9 +222,9 @@ stages:
               script: |
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz"
                 tar -xf apache-jmeter-5.5.tgz
-                unzip -o $(Build.BuildId)-perftests.zip
-                ./apache-jmeter-5.2.1/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
-                cat jmeter.log  
+                unzip -o $(Build.ArtifactStagingDirectory)/drop-perftests/(Build.BuildId)-perftests.zip
+                ./apache-jmeter-5.5/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
+              #  cat jmeter.log  
               workingDirectory: $(Pipeline.Workspace)/s/automatedtesting/jmeter
               #  ./apache-jmeter-5.5/bin/jmeter -n -t StressTest.jmx -JcsvFile=people-100.csv -l stress_results.jtl -j stress.log -e -o stress_report
               #  ./apache-jmeter-5.5/bin/jmeter -n -t EnduranceTest.jmx -JcsvFile=people-100.csv -l endurance_results.jtl -j endurance.log -e -o endurance_report
