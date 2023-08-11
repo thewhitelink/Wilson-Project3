@@ -222,7 +222,7 @@ stages:
               script: |
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz"
                 tar -xf apache-jmeter-5.5.tgz
-                unzip -o '$(Build.ArtifactStagingDirectory)/drop-perftests/(Build.BuildId)-perftests.zip'
+                unzip -o '$(Build.ArtifactStagingDirectory)/drop-perftests/$(Build.BuildId)-perftests.zip'
                 ./apache-jmeter-5.5/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
               #  cat jmeter.log  
               workingDirectory: $(Pipeline.Workspace)/s/automatedtesting/jmeter
@@ -294,7 +294,7 @@ stages:
             steps:
             - download: current
               displayName: 'Download Selenium'
-              artifact: uitests
+              artifact: $(Build.BuildId)-uitests
             - task: Bash@3
               displayName: UI Tests
               inputs:
