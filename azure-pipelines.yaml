@@ -281,7 +281,6 @@ stages:
 - stage: RunTestingSuite
   jobs:
   - deployment: SeleniumTests
-    pool:
     displayName: Selenium Tests
     environment: 
         name: '$(environmentName)'
