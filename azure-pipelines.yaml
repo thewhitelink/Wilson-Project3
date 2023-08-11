@@ -159,9 +159,9 @@ stages:
         rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium'
         includeRootFolder: false
         archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)/-uitests.zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/drop-uitests/$(Build.BuildId)-uitests.zip'
     # Selenium Test Suite - Publish the package  
-    - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)/-uitests.zip   # Same as the archiveFile artifact above. 
+    - publish: $(Build.ArtifactStagingDirectory)/drop-uitests/$(Build.BuildId)-uitests.zip   # Same as the archiveFile artifact above. 
       displayName: 'Upload Package'
       artifact: drop-uitests
         #--------------------------------------------#    
@@ -187,9 +187,9 @@ stages:
         rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/Starter.jmx'
         includeRootFolder: false
         archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/a/drop-perftests/$(Build.BuildId)-perftests.zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/drop-perftests/$(Build.BuildId)-perftests.zip'
     # JMeter Test Suite - Publish    
-    - publish: '$(Build.ArtifactStagingDirectory)/a/drop-perftests/$(Build.BuildId)-perftests.zip'
+    - publish: '$(Build.ArtifactStagingDirectory)/drop-perftests/$(Build.BuildId)-perftests.zip'
       displayName: 'Upload Package'
       artifact: drop-perftests
 
@@ -222,10 +222,10 @@ stages:
               script: |
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz"
                 tar -xf apache-jmeter-5.5.tgz
-                unzip -o '$(Build.ArtifactStagingDirectory)/s/drop-perftests/$(Build.BuildId)-perftests.zip'
+                unzip -o '$(Build.ArtifactStagingDirectory)/drop-perftests/$(Build.BuildId)-perftests.zip'
                 ./apache-jmeter-5.5/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
               #  cat jmeter.log  
-              workingDirectory: $(Pipeline.Workspace)/s/automatedtesting/jmeter
+              workingDirectory: $(Pipeline.Workspace)/automatedtesting/jmeter
               #  ./apache-jmeter-5.5/bin/jmeter -n -t StressTest.jmx -JcsvFile=people-100.csv -l stress_results.jtl -j stress.log -e -o stress_report
               #  ./apache-jmeter-5.5/bin/jmeter -n -t EnduranceTest.jmx -JcsvFile=people-100.csv -l endurance_results.jtl -j endurance.log -e -o endurance_report
 
@@ -268,7 +268,7 @@ stages:
                 if [ ! -d "$DIR" ]; then
                     mkdir app
                 fi
-                mv '/home/daniel/myAgent/_work/drop-uitests/$(Build.BuildId)-uitests.zip' app
+                mv '/home/daniel/myAgent/_work/1/drop-uitests/$(Build.BuildId)-drop-uitests.zip' app
                 cd app
                 unzip -o $(Build.BuildId)-uitests.zip
                 FILE=/home/testuser/app/chromedriver_linux64.zip
@@ -294,7 +294,7 @@ stages:
             steps:
             - download: current
               displayName: 'Download Selenium'
-              artifact: -uitests
+              artifact: drop-uitests
             - task: Bash@3
               displayName: UI Tests
               inputs:
