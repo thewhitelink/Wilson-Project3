@@ -222,7 +222,7 @@ stages:
               script: |
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz"
                 tar -xf apache-jmeter-5.5.tgz
-                unzip -o '$(Build.ArtifactStagingDirectory)/drop-perftests/$(Build.BuildId)-perftests.zip'
+                unzip -o '/home/myAgent/_work/1/drop-perftests/$(Build.BuildId)-perftests.zip'
                 ./apache-jmeter-5.5/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
               #  cat jmeter.log  
               workingDirectory: $(Pipeline.Workspace)/s/automatedtesting/jmeter
@@ -268,7 +268,7 @@ stages:
                 if [ ! -d "$DIR" ]; then
                     mkdir app
                 fi
-                mv '/home/myAgent/_work/1/drop-uitests/$(Build.BuildId)-drop-uitests.zip' /home/myAgent/app
+                mv '/home/myAgent/app/azagent/_work/1/drop-uitests/$(Build.BuildId)-uitests.zip' /home/myAgent/app
                 cd /home/myAgent/app
                 unzip -o $(Build.BuildId)-uitests.zip
                 FILE=/home/myAgent/app/chromedriver_linux64.zip
@@ -301,7 +301,7 @@ stages:
                 targetType: 'inline'
                 script: |
                   export PATH=$PATH:/home/myAgent/app
-                  cd /home/myAgent/app/_work/1/drop-uitests/
+                  cd /home/myAgent/app/$(Build.BuildId)-uitests
                   echo "Starting Selenium Tests"
                   python3 login.py >> selenium.log
                   echo "Completed Selenium Tests. Check selenium.log for results."
