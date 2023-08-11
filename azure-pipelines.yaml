@@ -189,7 +189,7 @@ stages:
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/drop-perftests/$(Build.BuildId)-perftests.zip'
     # JMeter Test Suite - Publish    
-    - publish: $(Build.ArtifactStagingDirectory)/drop-perftests/$(Build.BuildId)-perftests.zip
+    - publish: '$(Build.ArtifactStagingDirectory)/drop-perftests/$(Build.BuildId)-perftests.zip'
       displayName: 'Upload Package'
       artifact: drop-perftests
 
@@ -222,7 +222,7 @@ stages:
               script: |
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz"
                 tar -xf apache-jmeter-5.5.tgz
-                unzip -o $(Build.ArtifactStagingDirectory)/drop-perftests/(Build.BuildId)-perftests.zip
+                unzip -o '$(Build.ArtifactStagingDirectory)/drop-perftests/(Build.BuildId)-perftests.zip'
                 ./apache-jmeter-5.5/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
               #  cat jmeter.log  
               workingDirectory: $(Pipeline.Workspace)/s/automatedtesting/jmeter
