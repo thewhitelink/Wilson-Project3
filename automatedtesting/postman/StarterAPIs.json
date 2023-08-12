@@ -6,7 +6,7 @@
 	},
  	"item": [
  		{
- 			"name": "Create Author",
+ 			"name": "Create employee",
  			"event": [
  				{
  					"listen": "test",
@@ -54,7 +54,7 @@
 			"response": []
 		},
 		{
-			"name": "Get All authors",
+			"name": "Get All employees",
 			"event": [
 				{
 					"listen": "test",
@@ -72,24 +72,24 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors",
+					"raw": "https://dummy.restapiexample.com/api/v1/employees",
 					"protocol": "https",
 					"host": [
-					   "fakerestapi",
-					   "azurewebsites",
+					   "dummy",
+					   "restapiexample",
 					   "net"
 					],
 					"path": [
 						"api",
 						"v1",
-						"Authors"
+						"employees"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get Author",
+			"name": "Get employee",
 			"event": [
 				{
 					"listen": "test",
@@ -107,17 +107,18 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors",
+					"raw": "https://dummy.restapiexample.com/api/v1/employee/1",
 					"protocol": "https",
 					"host": [
-						"fakerestapi",
-						"azurewebsites",
-						"net"
+						"dummy",
+						"restapiexample",
+						"com"
 					 ],
 					 "path": [
 						 "api",
 						 "v1",
-						 "Authors"
+						 "employee",
+						 "1"
 					 ]
 				},
 				"description": "Get a single employee data"
@@ -125,7 +126,7 @@
 			"response": []
 		},
 		{
-			"name": "Update Author",
+			"name": "Update employee",
 			"event": [
 				{
 					"listen": "test",
@@ -144,7 +145,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"{{new_id}}\",\n    \"idBook\": \"{{new_idBook}}\",\n    \"firstName\": \"{{new_firstName}}\",\n    \"lastName\": \"{{LastName}}\"\n}",   
+					"raw": "{\n    \"id\": \"{{new_id}}\",\n}",   
 					"options": {
 						"raw": {
 							"language": "json"
@@ -152,7 +153,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://dummy.restapiexample.com/api/v1/update{{id}}",
+					"raw": "https://dummy.restapiexample.com/api/v1/update/21/",
 					"protocol": "https",
 					"host": [
 						"dummy",
@@ -163,7 +164,7 @@
 						 "api",
 						 "v1",
 						 "update",
-						 "{{id}}"
+						 "21"
 					 ]
 				},
 				"description": "Update an employee record"
@@ -171,7 +172,7 @@
 			"response": []
 		},
 		{
-			"name": "Delete Author",
+			"name": "Delete employee",
 			"event": [
 				{
 					"listen": "test",
@@ -189,18 +190,18 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors/{{id}}",
+					"raw": "https://dummy.restapiexample.com/api/v1/delete/2/",
 					"protocol": "https",
 					"host": [
-						"fakerestapi",
-						"azurewebsites",
+						"restapiexample",
+						"restapiexample",
 						"net"
 					 ],
 					 "path": [
 						 "api",
 						 "v1",
-						 "Authors",
-						 "{{id}}"
+						 "employee",
+						 "2"
 					 ]
 				},
 				"description": "Delete an employee record"
