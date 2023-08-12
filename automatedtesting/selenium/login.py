@@ -8,6 +8,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 # Initiate the chromedriver with code to run headless and remove logging errors
 chrome_options = webdriver.ChromeOptions()
+chrome_options = newChromeOptions()
+chrome_options.add_argument("--remote-allow-origins=*")
 chrome_options.add_argument("--headless") 
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_argument('--no-sandbox')
