@@ -39,16 +39,15 @@
  				"url": {
  					"raw": "https://fakerestapi.azurewebsites.net/api/v1/",
  					"protocol": "https",
- 					"host": [
- 						"fakerestapi",
+					 "host": [
+						"fakerestapi",
 						"azurewebsites",
-						"net",
-						"api",
-						"v1"
- 					],
- 					"path": [
- 						"Authors"
- 					]
+						"net"
+					 ],
+					 "path": [
+						 "api",
+						 "v1"
+					 ]
  				}
  			},
  			"response": []

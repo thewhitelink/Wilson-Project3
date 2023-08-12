@@ -42,11 +42,11 @@
 					"host": [
 					   "fakerestapi",
 					   "azurewebsites",
-					   "net",
-					   "api",
-					   "v1"
+					   "net"
 					],
 					"path": [
+						"api",
+						"v1",
 						"Authors"
 					]
 				}
@@ -77,11 +77,11 @@
 					"host": [
 					   "fakerestapi",
 					   "azurewebsites",
-					   "net",
-					   "api",
-					   "v1"
+					   "net"
 					],
 					"path": [
+						"api",
+						"v1",
 						"Authors"
 					]
 				}
@@ -110,17 +110,15 @@
 					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors",
 					"protocol": "https",
 					"host": [
-					   "fakerestapi",
-					   "azurewebsites",
-					   "net",
-					   "api",
-					   "v1"
-					],
-					"path": [
-						"api",
-						"v1",
-						"Authors"
-					]
+						"fakerestapi",
+						"azurewebsites",
+						"net"
+					 ],
+					 "path": [
+						 "api",
+						 "v1",
+						 "Authors"
+					 ]
 				},
 				"description": "Get a single employee data"
 			},
@@ -157,16 +155,16 @@
 					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors/{{id}}",
 					"protocol": "https",
 					"host": [
-					   "fakerestapi",
-					   "azurewebsites",
-					   "net",
-					   "api",
-					   "v1"
-					],
-					"path": [
-						"Authors",
-						"{{id}}"
-					]
+						"fakerestapi",
+						"azurewebsites",
+						"net"
+					 ],
+					 "path": [
+						 "api",
+						 "v1",
+						 "Authors",
+						 "{{id}}"
+					 ]
 				},
 				"description": "Update an employee record"
 			},
@@ -194,12 +192,16 @@
 					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors/{{id}}",
 					"protocol": "https",
 					"host": [
-					   "fakerestapi",
-					   "azurewebsites",
-					   "net",
-					   "api",
-					   "v1"
-					]
+						"fakerestapi",
+						"azurewebsites",
+						"net"
+					 ],
+					 "path": [
+						 "api",
+						 "v1",
+						 "Authors",
+						 "{{id}}"
+					 ]
 				},
 				"description": "Delete an employee record"
 			},
