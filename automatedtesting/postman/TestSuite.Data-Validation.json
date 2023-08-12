@@ -16,13 +16,14 @@
  							"    pm.response.to.be.ok;",
  							"});",
                              							"",
- 							"pm.test(\"Response contains valid author data\", function () {",
+ 							"pm.test(\"Response contains valid user data\", function () {",
  							"    var jsonData = pm.response.json();",
  							"    pm.expect(jsonData).to.be.an('array');",
  							"    pm.expect(jsonData[0]).to.have.property('id');",
- 							"    pm.expect(jsonData[0]).to.have.property('idBook');",
+ 							"    pm.expect(jsonData[0]).to.have.property('email');",
  							"    pm.expect(jsonData[0]).to.have.property('firstName');",
  							"    pm.expect(jsonData[0]).to.have.property('lastName');",
+							"    pm.expect(jsonData[0]).to.have.property('avatar');",
  							"});",
  							"",
  							"pm.test(\"Status code is 200\", function () {",
@@ -37,17 +38,15 @@
  				"method": "GET",
  				"header": [],
  				"url": {
- 					"raw": "https://dummy.restapiexample.com/api/v1/employees",
+ 					"raw": "https://reqres.in/api/users?page=2",
  					"protocol": "https",
 					 "host": [
-						"dummy",
-						"restapiexample",
-						"com"
+						"reqres",
+						"in"
 					 ],
 					 "path": [
 						 "api",
-						 "v1",
-						 "employees"
+						 "users?page2"
 					 ]
  				}
  			},
