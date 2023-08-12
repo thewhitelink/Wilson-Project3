@@ -37,10 +37,10 @@
  				"method": "GET",
  				"header": [],
  				"url": {
- 					"raw": "http://fakerestapi.azurewebsites.net/api/v1/Authors",
+ 					"raw": "http://eqr-appservice.azurewebsites.net/api/v1/Authors",
  					"protocol": "http",
  					"host": [
- 						"fakerestapi",
+ 						"eqr-appservice",
  						"azurewebsites",
  						"net"
  					],
