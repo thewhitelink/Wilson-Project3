@@ -25,7 +25,7 @@
  				}
  			],
 			"request": {
-				"method": "PUT",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -37,7 +37,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors",
+					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors/add",
 					"protocol": "https",
 					"host": [
 					   "fakerestapi",
@@ -47,7 +47,8 @@
 					"path": [
 						"api",
 						"v1",
-						"Authors"
+						"Authors",
+						"add"
 					]
 				}
 			},
@@ -140,7 +141,7 @@
 				}
 			],
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
