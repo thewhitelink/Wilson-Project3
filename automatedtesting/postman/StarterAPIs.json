@@ -37,7 +37,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://eqr-appservice.azurewebsites.net/api/Authors/add",
+					"raw": "{{url}}",
 					"host": [
 						"eqr-appservice",
  						"azurewebsites",
@@ -135,7 +135,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"{{new_title}}\",\n    \"price\": \"{{new_price}}\",\n    \"stock\": \"{{new_stock}}\"\n}",
+					"raw": "{\n    \"id\": \"{{new_id}}\",\n    \"idBook\": \"{{new_idBook}}\",\n    \"firstName\": \"{{new_firstName}}\",\n    \"lastName\": \"{{LastName}}\"\n}",   
 					"options": {
 						"raw": {
 							"language": "json"
@@ -143,14 +143,11 @@
 					}
 				},
 				"url": {
-					"raw": "http://eqr-appservice.azurewebsites.net/api/Authors/{{id}}",
+					"raw": "{{url}}{{id}}",
 					"host": [
-						"eqr-appservice",
- 						"azurewebsites",
- 						"net"
+						"{{url}}"
 					],
 					"path": [
-						"api",
 						"Authors",
 						"{{id}}"
 					]
@@ -178,14 +175,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://eqr-appservice.azurewebsites.net/api/Authors/{{id}}",
+					"raw": "{{url}}{{id}}",
 					"host": [
-						"eqr-appservice",
- 						"azurewebsites",
- 						"net"
+						"{{url}}"
+
 					],
 					"path": [
-						"api",
 						"Authors",
 						"{{id}}"
 					]

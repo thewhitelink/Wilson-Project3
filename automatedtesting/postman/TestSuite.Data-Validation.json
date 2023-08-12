@@ -37,16 +37,12 @@
  				"method": "GET",
  				"header": [],
  				"url": {
- 					"raw": "http://eqr-appservice.azurewebsites.net/api/v1/Authors",
+ 					"raw": "{{url}}",
  					"protocol": "http",
  					"host": [
- 						"eqr-appservice",
- 						"azurewebsites",
- 						"net"
+ 						"{{url}}"
  					],
  					"path": [
- 						"api",
- 						"v1",
  						"Authors"
  					]
  				}
