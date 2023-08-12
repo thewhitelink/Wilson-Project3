@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 
 # Initiate the chromedriver with code to run headless and remove logging errors
 chrome_options = ChromeOptions()
+chrome_binary_location = "/opt/google/chrome"
 chrome_options.add_argument("--headless") 
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_argument('--no-sandbox')
