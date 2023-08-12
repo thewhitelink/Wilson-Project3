@@ -37,7 +37,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors/add",
+					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors/700",
 					"protocol": "https",
 					"host": [
 					   "fakerestapi",
@@ -48,7 +48,7 @@
 						"api",
 						"v1",
 						"Authors",
-						"add"
+						"700"
 					]
 				}
 			},
