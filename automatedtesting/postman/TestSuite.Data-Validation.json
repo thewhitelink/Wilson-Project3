@@ -38,7 +38,7 @@
  				"header": [],
  				"url": {
  					"raw": "{{url}}",
- 					"protocol": "http",
+ 					"protocol": "https",
  					"host": [
  						"{{url}}"
  					],
