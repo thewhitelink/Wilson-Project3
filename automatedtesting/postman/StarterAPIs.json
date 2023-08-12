@@ -1,35 +1,34 @@
 {
 	"info": {
-		"_postman_id": "67c212c6-7419-4908-929d-9692378c7b0b",
-		"name": "Udacity Regression Test Suit",
+		"_postman_id": "a837e746-8941-47ae-b250-e87152559841",
+		"name": "Regression Test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
- 	"item": [
- 		{
- 			"name": "Create employee",
- 			"event": [
- 				{
- 					"listen": "test",
- 					"script": {
- 						"exec": [
- 							"pm.test(\"Successful response\", function () {",
- 							"    pm.expect(pm.response.text()).to.include(\"name\");",
- 							"});",
- 							"",
- 							"pm.test(\"Status code is 200\", function () {",
- 							"    pm.response.to.have.status(200);",
- 							"});"
- 						],
- 						"type": "text/javascript"
- 					}
- 				}
- 			],
+	"item": [
+		{
+			"name": "Create Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ded58463-2520-4358-91f0-eec5bf5a7da9",
+						"exec": [
+							"pm.test(\"Successful response\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"success\");",
+							"});",
+							"var json = pm.response.json();",
+							"pm.environment.set(\"id\", json.data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"{{name}}\",\n    \"job\": \"{{job}}\",\n}",
+					"raw": "{\n    \"name\": \"{{name}}\",\n    \"salary\": \"{{salary}}\",\n    \"age\": \"{{age}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -37,30 +36,34 @@
 					}
 				},
 				"url": {
-					"raw": "https://reqres.in/api/users",
-					"protocol": "https",
+					"raw": "http://dummy.restapiexample.com/api/v1/create",
+					"protocol": "http",
 					"host": [
-					   "reqres",
-					   "in"
+						"dummy",
+						"restapiexample",
+						"com"
 					],
 					"path": [
 						"api",
-						"users"
+						"v1",
+						"create"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get All employees",
+			"name": "Get All Employees",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
+						"id": "ca903a60-6c42-4529-9232-60006a5cee1f",
 						"exec": [
 							"pm.test(\"Successful response\", function () {",
-							"    pm.expect(pm.response.code).to.eq(200);",
-							"});"
+							"    pm.expect(pm.response.text()).to.include(\"success\");",
+							"});",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -70,65 +73,44 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://reqres.in/api/users?page=2",
-					"protocol": "https",
+					"raw": "http://dummy.restapiexample.com/api/v1/employees",
+					"protocol": "http",
 					"host": [
-					   "reqres",
-					   "in"
+						"dummy",
+						"restapiexample",
+						"com"
 					],
 					"path": [
 						"api",
-						"users?page=2"
+						"v1",
+						"employees"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get employee",
+			"name": "Update Employee",
 			"event": [
 				{
-					"listen": "test",
+					"listen": "prerequest",
 					"script": {
+						"id": "4f91732a-ecda-4774-aa0d-b8f1ecbc43c7",
 						"exec": [
-							"pm.test(\"Successful response\", function () {",
-							"    pm.expect(pm.response.code).to.eq(200);",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://reqres.in/api/users/2",
-					"protocol": "https",
-					"host": [
-						"reqres",
-						"in"
-					 ],
-					 "path": [
-						 "api",
-						 "users",
-						 "2"
-					 ]
 				},
-				"description": "Get a single employee data"
-			},
-			"response": []
-		},
-		{
-			"name": "Update employee",
-			"event": [
 				{
 					"listen": "test",
 					"script": {
+						"id": "111d3fcf-9354-4425-8d81-b3f0cbce09b9",
 						"exec": [
-							"pm.test(\"Successful response\", function () {",
-							"    pm.expect(pm.response.code).to.eq(200);",
-							"});"
+							"pm.test(\"Successful response\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"success\");\r",
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -139,27 +121,23 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"{{name}}\",\n    \"job\": \"{{job2}}\",\n}",   
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "\t{\r\n\t\t\"name\":\"employee updated\",\r\n\t\t\"salary\":\"1123\",\r\n\t\t\"age\":\"23\"\r\n\t}"
 				},
 				"url": {
-					"raw": "https://reqres.in/api/users/2",
-					"protocol": "https",
+					"raw": "http://dummy.restapiexample.com/api/v1/update/21",
+					"protocol": "http",
 					"host": [
-						"reqres",
-						"in"
-					 ],
-					 "path": [
-						 "api",
-						 "users",
-						 "2"
-					 ]
-				},
-				"description": "Update an employee record"
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"update",
+						"21"
+					]
+				}
 			},
 			"response": []
 		},
@@ -169,10 +147,12 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "803c02b5-8647-4bc0-b4e1-1cfda0022648",
 						"exec": [
-							"pm.test(\"Successful response\", function () {",
-							"    pm.expect(pm.response.code).to.eq(200);",
-							"});"
+							"pm.test(\"Successful response\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"success\");\r",
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -182,41 +162,23 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://reqres.in/api/users/{{name}}",
-					"protocol": "https",
+					"raw": "http://dummy.restapiexample.com/api/v1/delete/2",
+					"protocol": "http",
 					"host": [
-						"reqres",
-						"in"
-					 ],
-					 "path": [
-						 "api",
-						 "users",
-						 "{{name}}"
-					 ]
-				},
-				"description": "Delete an employee record"
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"delete",
+						"2"
+					]
+				}
 			},
 			"response": []
 		}
 	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	]
+	"protocolProfileBehavior": {}
 }
