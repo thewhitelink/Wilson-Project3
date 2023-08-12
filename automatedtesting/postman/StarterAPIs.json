@@ -29,7 +29,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"{{id}}\",\n    \"idBook\": \"{{idBook}}\",\n    \"firstName\": \"{{FirstName}}\"\n    \"lastName\": \"{{LastName}}\"\n}",
+					"raw": "{\n    \"name\": \"{{name}}\",\n    \"job\": \"{{job}}\",\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -139,7 +139,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"{{new_id}}\",\n}",   
+					"raw": "{\n    \"updatedAt\": \"{{updatedAt}}\",\n}",   
 					"options": {
 						"raw": {
 							"language": "json"
