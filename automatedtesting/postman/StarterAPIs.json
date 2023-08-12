@@ -37,17 +37,17 @@
 					}
 				},
 				"url": {
-					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors/",
+					"raw": "https://dummy.restapiexample.com/api/v1/create",
 					"protocol": "https",
 					"host": [
-					   "fakerestapi",
-					   "azurewebsites",
-					   "net"
+					   "dummy",
+					   "restapiexample",
+					   "com"
 					],
 					"path": [
 						"api",
 						"v1",
-						"Authors"
+						"create"
 					]
 				}
 			},
@@ -152,17 +152,17 @@
 					}
 				},
 				"url": {
-					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors/{{id}}",
+					"raw": "https://dummy.restapiexample.com/api/v1/update{{id}}",
 					"protocol": "https",
 					"host": [
-						"fakerestapi",
-						"azurewebsites",
-						"net"
+						"dummy",
+						"restapiexample",
+						"com"
 					 ],
 					 "path": [
 						 "api",
 						 "v1",
-						 "Authors",
+						 "update",
 						 "{{id}}"
 					 ]
 				},
