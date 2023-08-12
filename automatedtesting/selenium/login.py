@@ -58,7 +58,7 @@ items = [
 ]
 
 for item in items:
-    add_to_cart_button = driver.find_element(By.ID, item)
+    add_to_cart_button = driver.find_element(By.ID, 'item')
     print(item)
     time.sleep(1)
     add_to_cart_button.click()
@@ -79,7 +79,7 @@ remove_items = [
 ]
 
 for remove_item in remove_items:
-    remove_from_cart_button = driver.find_element(By.ID, remove_item)
+    remove_from_cart_button = driver.find_element(By.ID, 'remove_item')
     print(remove_item)
     time.sleep(1)
     remove_from_cart_button.click()
