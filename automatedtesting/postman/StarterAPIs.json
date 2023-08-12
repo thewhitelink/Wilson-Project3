@@ -13,7 +13,7 @@
  					"script": {
  						"exec": [
  							"pm.test(\"Successful response\", function () {",
- 							"    pm.expect(pm.response.text()).to.include(\"id\");",
+ 							"    pm.expect(pm.response.text()).to.include(\"name\");",
  							"});",
  							"",
  							"pm.test(\"Status code is 200\", function () {",
@@ -139,7 +139,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"updatedAt\": \"{{updatedAt}}\",\n}",   
+					"raw": "{\n    \"name\": \"{{name}}\",\n    \"job\": \"{{job2}}\",\n}",   
 					"options": {
 						"raw": {
 							"language": "json"
