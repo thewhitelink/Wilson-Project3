@@ -39,12 +39,9 @@
 				"url": {
 					"raw": "{{url}}",
 					"host": [
-						"eqr-appservice",
- 						"azurewebsites",
- 						"net"
+						"{{url}}"
 					],
 					"path": [
-						"api",
 						"Authors"
 					]
 				}
@@ -100,14 +97,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://eqr-appservice.azurewebsites.net/api/Authors",
+					"raw": "http://fakerestapi.azurewebsites.net/api/v1/Authors",
 					"host": [
-						"eqr-appservice",
+						"fakerestapi",
  						"azurewebsites",
  						"net"
 					],
 					"path": [
 						"api",
+						"v1",
 						"Authors"
 					]
 				},
