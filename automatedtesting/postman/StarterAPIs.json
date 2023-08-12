@@ -182,7 +182,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://reqres.in/api/users/2",
+					"raw": "https://reqres.in/api/users/{{name}}",
 					"protocol": "https",
 					"host": [
 						"reqres",
@@ -191,7 +191,7 @@
 					 "path": [
 						 "api",
 						 "users",
-						 "2"
+						 "{{name}}"
 					 ]
 				},
 				"description": "Delete an employee record"
