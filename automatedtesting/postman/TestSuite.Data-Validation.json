@@ -37,10 +37,14 @@
  				"method": "GET",
  				"header": [],
  				"url": {
- 					"raw": "{{url}}",
+ 					"raw": "https://fakerestapi.azurewebsites.net/api/v1/",
  					"protocol": "https",
  					"host": [
- 						"{{url}}"
+ 						"fakerestapi",
+						"azurewebsites",
+						"net",
+						"api",
+						"v1"
  					],
  					"path": [
  						"Authors"
