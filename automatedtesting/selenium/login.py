@@ -4,7 +4,7 @@ import datetime
 from selenium import webdriver
 #from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrchromium.options import Options
+from selenium.webdriver.chromium.options import Options
 
 # Initiate the chromedriver with code to run headless and remove logging errors
 # options = webdriver.ChromeOptions()
