@@ -4,7 +4,6 @@ import datetime
 #from selenium.webdriver.common.by import By
 #from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--headless")
@@ -12,12 +11,12 @@ chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-# Use ChromeDriverManager to automatically download and manage ChromeDriver
-driver = webdriver.Chrome(ChromeDriverManager().install())
+# Set the PATH environment variable to include the location of ChromeDriver
+import os
+os.environ["PATH"] += os.pathsep + "/usr/bin/chromedriver"
 
-# Set options for the driver
-driver.set_window_size(1920, 1080)  # Set window size as needed
-driver.implicitly_wait(10)  # Set implicit wait time as needed
+# Initialize Chrome WebDriver
+driver = webdriver.Chrome(options=chrome_options)
 
 
 # # Navigate to the demo 'https://www.saucedemo.com'website
