@@ -261,21 +261,36 @@ stages:
 
                 cd ~/
 
-                # Install Dependencies
-                sudo apt-get install -y unzip wget libxss1 libappindicator1 libindicator 7 xvfb
-                mdir /home/myAgent/app/_work/1/drop-uitests/app
+                # Install Required Dependencies.
+                sudo apt install -y unzip wget libxss1 libappindicator1 libindicator7 xvfb
+
+                # Install Google Chrome.
+                wget -O google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+                sudo dpkg -i google-chrome-stable_current_amd64.deb > /dev/null
+
+                # If there are any dependency errors, fix them with:
+                sudo apt --fix-broken install
+
+                # Install ChromeDriver - Replace URL with latest found at https://googlechromelabs.github.io/chrome-for-testing/
+                wget -O chromedriver-linux64.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip
+                unzip chromedriver-linux64.zip > /dev/null
+                sudo ln -s $PWD/chromedriver-linux64 /usr/local/bin/chromedriver-linux64
+
+                # Move chromedriver to a directory in the system PATH and make executable.
+                if [ -d "/usr/bin/chromedriver-linux64" ]; then
+                    sudo rm -r /usr/bin/chromedriver-linux64
+                fi
+                sudo mv -f chromedriver-linux64 /usr/bin/
+                sudo chmod +x /usr/bin/chromedriver-linux64
+                cd /home
+
+                # Make directory for tests 
+                mkdir /home/myAgent/app/_work/1/drop-uitests/app
                 mv /home/myAgent/app/_work/1/drop-uitests/$(Build.BuildId)-uitests.zip /home/myAgent/app
                 cd /home/myAgent/app
                 unzip -o $(Build.BuildId)-uitests.zip
 
-                FILE=/home/myAgent/app/chromedriver_linux64.zip
-                if [ ! -f "$FILE" ]; then
-                    LATEST=$(wget -q -O - https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip)
-                    wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chrome-linux64.zip
-                    unzip -o chromedriver_linux64.zip
-                    sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
-                fi
-                cd /home
+                # Make Agent
                 mkdir myAgent;cd myAgent;curl -fkSL -o vstsagent.tar.gz https://vstsagentpackage.azureedge.net/agent/3.225.0/vsts-agent-linux-x64-3.225.0.tar.gz;tar -zxvf vstsagent.tar.gz; if [ -x "$(command -v systemctl)" ]; then ./config.sh --unattended --environment --environmentname "test" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/dwilson0779/ --work _work --projectname 'project-3-pipelines' --auth PAT --token qbl5klcpjtl23ihljcbcdul2vwxqun6rzmxr4veot6xkbituu5aa --runasservice; sudo ./bin/installdependencies.sh; sudo ./svc.sh install; sudo ./svc.sh start; else ./config.sh --environment --environmentname "test" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/dwilson0779/ --work _work --projectname 'project-3-pipelines' --auth PAT --token qbl5klcpjtl23ihljcbcdul2vwxqun6rzmxr4veot6xkbituu5aa; ./run.sh; fi 
   
 - stage: RunTestingSuite
@@ -302,12 +317,3 @@ stages:
                   echo "Starting Selenium Tests"
                   python3 login.py >> selenium.log
                   echo "Completed Selenium Tests. Check selenium.log for results."
-
-            # - task: Bash@3
-            #   inputs:
-            #     targetType: 'inline'
-            #     script: |
-            #       #! //bin/bash
-
-            #       echo "Displaying selenium.log"
-            #       cat /home/christian/app/selenium*.utf8.log
