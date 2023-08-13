@@ -19,6 +19,7 @@ from selenium import webdriver
 
 #options.capabilities("google-chrome")
 #options.binary_location = ("/usr/bin/google-chrome")
+options = Options()
 options = webdriver.ChromeOptions()
 options.binary_location = "/usr/bin/google-chrome"
 driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver-linux64", options=chrome_options)
