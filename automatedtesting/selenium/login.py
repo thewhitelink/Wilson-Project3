@@ -17,14 +17,15 @@ from selenium import webdriver
 # options.add_experimental_option('excludeSwitches', ['enable-logging'])
 # driver = webdriver.Chrome('/usr/bin/chromedriver')#, options=None)
 
-options = webdriver.Chrome(ChromeDriverManager().install())
 #options.capabilities("google-chrome")
 #options.binary_location = ("/usr/bin/google-chrome")
+service = Service()
+options = webdriver.ChromeOptions()
+driver = webdriver.Chrome(service=service, options=options)
 options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument('--disable-dev-shm-usage')
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
-driver = webdriver.Chrome()
 
 # # Print date and time
 # current_datetime = datetime.datetime.now()
