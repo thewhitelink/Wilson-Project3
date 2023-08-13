@@ -288,8 +288,9 @@ stages:
                 mkdir myAgent;cd myAgent;curl -fkSL -o vstsagent.tar.gz https://vstsagentpackage.azureedge.net/agent/3.225.0/vsts-agent-linux-x64-3.225.0.tar.gz;tar -zxvf vstsagent.tar.gz; if [ -x "$(command -v systemctl)" ]; then ./config.sh --unattended --environment --environmentname "test" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/dwilson0779/ --work _work --projectname 'project-3-pipelines' --auth PAT --token qbl5klcpjtl23ihljcbcdul2vwxqun6rzmxr4veot6xkbituu5aa --runasservice; sudo ./bin/installdependencies.sh; sudo ./svc.sh install; sudo ./svc.sh start; else ./config.sh --environment --environmentname "test" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/dwilson0779/ --work _work --projectname 'project-3-pipelines' --auth PAT --token qbl5klcpjtl23ihljcbcdul2vwxqun6rzmxr4veot6xkbituu5aa; ./run.sh; fi 
 
                 # Make directory for tests 
-                mkdir /home/myAgent/app/_work/1/drop-uitests/app
-                mv /home/myAgent/app/_work/1/drop-uitests/$(Build.BuildId)-uitests.zip /home/myAgent/app
+                mkdir /home/myAgent/_work/1/drop-uitests/app
+                mkdir /home/myAgent/app
+                mv /home/myAgent/_work/1/drop-uitests/$(Build.BuildId)-uitests.zip /home/myAgent/app
                 cd /home/myAgent/app
                 unzip -o $(Build.BuildId)-uitests.zip
   
