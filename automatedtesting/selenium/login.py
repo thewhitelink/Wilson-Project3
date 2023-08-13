@@ -16,6 +16,7 @@ from selenium.webdriver.chrome.options import Options
 # driver = webdriver.Chrome('/usr/bin/chromedriver')#, options=None)
 
 options = webdriver.ChromeOptions()
+options.binary_location = ("/usr/bin/google-chrome")
 options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument('--disable-dev-shm-usage')
