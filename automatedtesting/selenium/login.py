@@ -22,7 +22,8 @@ from selenium import webdriver
 #options.binary_location = ("/usr/bin/google-chrome")
 service = Service()
 options = webdriver.ChromeOptions()
-driver = webdriver.Chrome(service=service, options=options)
+options.binary_location = "/usr/bin/google-chrome"
+driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver-linux64", options=chrome_options)
 options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument('--disable-dev-shm-usage')
