@@ -272,8 +272,8 @@ stages:
                 sudo apt --fix-broken install
 
                 # Install ChromeDriver - Replace URL with latest found at https://googlechromelabs.github.io/chrome-for-testing/
-                wget -O chromedriver-linux64.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip
-                unzip chromedriver-linux64.zip > /dev/null
+                sudo wget -O chromedriver-linux64.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip
+                sudo unzip chromedriver-linux64.zip > /dev/null
                 sudo ln -s $PWD/chromedriver-linux64 /usr/local/bin/chromedriver-linux64
 
                 # Move chromedriver to a directory in the system PATH and make executable.
