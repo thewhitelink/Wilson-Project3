@@ -6,26 +6,14 @@ import datetime
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
-
-# Initiate the chromedriver with code to run headless and remove logging errors
-# options = webdriver.ChromeOptions()
-# options.binary_location = ("/usr/bin/google-chrome")
-# options.add_argument("--headless")
-# options.add_argument("--no-sandbox")
-# options.add_argument('--disable-dev-shm-usage')
-# options.add_experimental_option('excludeSwitches', ['enable-logging'])
-# driver = webdriver.Chrome('/usr/bin/chromedriver')#, options=None)
-
-#options.capabilities("google-chrome")
-#options.binary_location = ("/usr/bin/google-chrome")
 chrome_options = webdriver.ChromeOptions()
-chrome_options.binary_location = "/usr/bin/google-chrome"
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-driver = webdriver.Chrome(ChromeDriverManager().install())
+# Use ChromeDriverManager to automatically download and manage ChromeDriver
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
 
 # # Print date and time
 # current_datetime = datetime.datetime.now()
