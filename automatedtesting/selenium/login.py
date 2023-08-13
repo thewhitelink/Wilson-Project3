@@ -4,7 +4,7 @@ import datetime
 from selenium import webdriver
 #from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chromium.options import Options
+from selenium.webdriver.chrome.options import Options
 
 # Initiate the chromedriver with code to run headless and remove logging errors
 # options = webdriver.ChromeOptions()
@@ -15,14 +15,14 @@ from selenium.webdriver.chromium.options import Options
 # options.add_experimental_option('excludeSwitches', ['enable-logging'])
 # driver = webdriver.Chrome('/usr/bin/chromedriver')#, options=None)
 
-options = webdriver.chromium()
+options = webdriver.chrome()
 #options.capabilities("google-chrome")
 #options.binary_location = ("/usr/bin/google-chrome")
 options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument('--disable-dev-shm-usage')
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
-driver = webdriver.chromium()
+driver = webdriver.Chrome()
 
 # # Print date and time
 # current_datetime = datetime.datetime.now()
