@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Starter APIs Data Validation" tests="1" time="0.468">
+  <testsuite name="Validate Author Data" id="24fb98b8-b307-401d-8e3b-0c1e400289b9" timestamp="2023-08-11T23:29:32.133Z" tests="3" failures="0" errors="0" time="0.468">
+    <testcase name="Response is not empty" time="0.468" classname="StarterApIsDataValidation"/>
+    <testcase name="Response contains valid author data" time="0.468" classname="StarterApIsDataValidation"/>
+    <testcase name="Status code is 200" time="0.468" classname="StarterApIsDataValidation"/>
+  </testsuite>
+</testsuites>

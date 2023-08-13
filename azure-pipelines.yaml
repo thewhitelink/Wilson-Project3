@@ -265,7 +265,7 @@ stages:
                 sudo apt install -y unzip wget libxss1 libappindicator1 libindicator7 xvfb
 
                 # Install Google Chrome.
-                wget -O google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+                sudo wget -O google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
                 sudo dpkg -i google-chrome-stable_current_amd64.deb > /dev/null
 
                 # If there are any dependency errors, fix them with:

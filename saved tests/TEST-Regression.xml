@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Starter APIs Regression" tests="2" time="0.576">
+  <testsuite name="Create Author" id="bf8dd44c-cafd-45a5-abaf-42c1107f913c" timestamp="2023-08-11T23:29:34.867Z" tests="2" failures="0" errors="0" time="0.292">
+    <testcase name="Successful response" time="0.292" classname="StarterApIsRegression"/>
+    <testcase name="Status code is 200" time="0.292" classname="StarterApIsRegression"/>
+  </testsuite>
+  <testsuite name="Get All Author" id="d94559d1-2a49-45e4-8d32-996837450834" timestamp="2023-08-11T23:29:34.867Z" tests="2" failures="0" errors="0" time="0.284">
+    <testcase name="Successful response" time="0.284" classname="StarterApIsRegression"/>
+    <testcase name="Status code is 200" time="0.284" classname="StarterApIsRegression"/>
+  </testsuite>
+</testsuites>
