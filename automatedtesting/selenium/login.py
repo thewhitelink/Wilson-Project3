@@ -15,7 +15,7 @@ from selenium.webdriver.chrome.options import Options
 # options.add_experimental_option('excludeSwitches', ['enable-logging'])
 # driver = webdriver.Chrome('/usr/bin/chromedriver')#, options=None)
 
-options = webdriver.chrome()
+options = webdriver.Chrome()
 #options.capabilities("google-chrome")
 #options.binary_location = ("/usr/bin/google-chrome")
 options.add_argument("--headless")
