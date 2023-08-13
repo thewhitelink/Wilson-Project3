@@ -19,14 +19,14 @@ from selenium import webdriver
 
 #options.capabilities("google-chrome")
 #options.binary_location = ("/usr/bin/google-chrome")
-options = Options()
-options = webdriver.ChromeOptions()
-options.binary_location = "/usr/bin/google-chrome"
+chrome_options = Options()
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = "/usr/bin/google-chrome"
 driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver-linux64", options=chrome_options)
-options.add_argument("--headless")
-options.add_argument("--no-sandbox")
-options.add_argument('--disable-dev-shm-usage')
-options.add_experimental_option('excludeSwitches', ['enable-logging'])
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
 # # Print date and time
 # current_datetime = datetime.datetime.now()
