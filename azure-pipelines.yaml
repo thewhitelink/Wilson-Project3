@@ -65,12 +65,12 @@ stages:
 # #--------------------------------------------#  
 # # BUILD STAGE
 # #--------------------------------------------#    
-# - stage: Build
-#   displayName: Building
-#   jobs:
-#   - job: BuildInfrastructure
-#     pool: myPool
-#     steps:
+- stage: Build
+  displayName: Building
+  jobs:
+  - job: BuildInfrastructure
+    pool: myPool
+    steps:
 #     #--------------------------------------------#  
 #     # Use Terraform to create the Infrastructure      
 #     # Install Terraform on the pipeline agent 
