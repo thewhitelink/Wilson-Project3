@@ -277,13 +277,18 @@ stages:
                 sudo wget -O chromedriver-linux64.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip
                 sudo unzip chromedriver-linux64.zip > /dev/null
                 sudo ln -s $PWD/chromedriver-linux64 /usr/local/bin/chromedriver-linux64
+                sudo ln -s $PWD/google-chrome-stable /usr/local/bin/google-chrome-stable
+                sudo ln -s $PWD/google-chrome /usr/local/bin/google-chrome
 
                 # Move chromedriver to a directory in the system PATH and make executable.
                 if [ -d "/usr/bin/chromedriver-linux64" ]; then
                     sudo rm -r /usr/bin/chromedriver-linux64
                 fi
                 sudo mv -f chromedriver-linux64 /usr/bin/
+                sudo chmod +x /usr/bin/google-chrome
+                sudo chmod +x /usr/bin/google-chrome-stable
                 sudo chmod +x /usr/bin/chromedriver-linux64
+                sudo chmod +x /usr/bin/chromedriver
                 cd /home
 
                 # Make Agent
