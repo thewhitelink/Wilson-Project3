@@ -1,11 +1,8 @@
 # #!/usr/bin/env python
 import time
 import datetime
-from selenium import webdriver
-#from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
+#from selenium.webdriver.common.by import By
+#from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 
 # Initiate the chromedriver with code to run headless and remove logging errors
@@ -26,7 +23,7 @@ chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver", options=chrome_options)
+driver = webdriver.Chrome(options=chrome_options)
 
 # # Print date and time
 # current_datetime = datetime.datetime.now()
