@@ -16,6 +16,7 @@ from selenium.webdriver.chrome.options import Options
 # driver = webdriver.Chrome('/usr/bin/chromedriver')#, options=None)
 
 options = webdriver.ChromeOptions()
+options.capabilities("google-chrome")
 options.binary_location = ("/usr/bin/google-chrome")
 options.add_argument("--headless")
 options.add_argument("--no-sandbox")
@@ -46,7 +47,6 @@ username_field.send_keys('standard_user')
 password_field = driver.find_element(By.ID, 'password')
 password_field.clear()
 password_field.send_keys('secret_sauce')
-
 # Pause for 2 second to verify credentials input
 time.sleep(2)
 
