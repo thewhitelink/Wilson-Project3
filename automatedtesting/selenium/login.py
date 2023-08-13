@@ -5,6 +5,8 @@ from selenium import webdriver
 #from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
 
 # Initiate the chromedriver with code to run headless and remove logging errors
 # options = webdriver.ChromeOptions()
@@ -15,7 +17,7 @@ from selenium.webdriver.chrome.options import Options
 # options.add_experimental_option('excludeSwitches', ['enable-logging'])
 # driver = webdriver.Chrome('/usr/bin/chromedriver')#, options=None)
 
-options = webdriver.Chrome()
+options = webdriver.Chrome(ChromeDriverManager().install())
 #options.capabilities("google-chrome")
 #options.binary_location = ("/usr/bin/google-chrome")
 options.add_argument("--headless")
