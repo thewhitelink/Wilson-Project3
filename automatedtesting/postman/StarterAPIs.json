@@ -128,53 +128,6 @@
                 "description": "Delete an employee record"
             },
             "response": []
-        },
-		{
-            "name": "Update Author",
-            "event": [
-                {
-                    "listen": "test",
-                    "script": {
-                        "exec": [
-                            "pm.test(\"Status code is 200\", function () {",
-                            "    pm.response.to.have.status(200);",
-                            "});"
-                        ],
-                        "type": "text/javascript"
-                    }
-                }
-            ],
-            "request": {
-                "method": "PUT",
-                "header": [],
-                "url": {
-                    "raw": "http://fakerestapi.azurewebsites.net/api/v1/Authors/1",
-                    "protocol": "http",
-                    "host": [
-                        "fakerestapi",
-                        "azurewebsites",
-                        "net"
-                    ],
-                    "path": [
-                        "api",
-                        "v1",
-                        "Authors",
-                        "1"
-                    ]
-                },
-				"headers": {
-					"accept": "text/json; v=1.0",
-					"Content-Type": "application/json"
-				  },
-				"data": {
-					"id": 2,
-					"idBook": 2,
-					"firstName": "Daniel",
-					"lastName": "Wilson"
-				  },
-                "description": "Update an employee record"
-            },
-            "response": []
         }
     ]
 }
