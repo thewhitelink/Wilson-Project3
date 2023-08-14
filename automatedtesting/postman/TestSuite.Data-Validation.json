@@ -12,13 +12,23 @@
  					"listen": "test",
  					"script": {
  						"exec": [
- 							"pm.test(\"Response is not empty\", function () {",
- 							"    pm.response.to.be.ok;",
- 							"});",
- 							"pm.test(\"Status code is 200\", function () {",
- 							"    pm.response.to.have.status(200);",
- 							"});"
- 						],
+                            "pm.test(\"Response is not empty\", function () {",
+                            "    pm.response.to.be.ok;",
+                            "});",
+                            "",
+                            "pm.test(\"Response contains valid author data\", function () {",
+                            "    var jsonData = pm.response.json();",
+                            "    pm.expect(jsonData).to.be.an('array');",
+                            "    pm.expect(jsonData[0]).to.have.property('id');",
+                            "    pm.expect(jsonData[0]).to.have.property('idBook');",
+                            "    pm.expect(jsonData[0]).to.have.property('firstName');",
+                            "    pm.expect(jsonData[0]).to.have.property('lastName');",
+                            "});",
+                            "",
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});"
+                        ],
  						"type": "text/javascript"
  					}
  				}
@@ -27,15 +37,16 @@
  				"method": "GET",
  				"header": [],
  				"url": {
- 					"raw": "https://reqres.in/api/users?page=2",
+ 					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors",
  					"protocol": "https",
 					 "host": [
-						"reqres",
-						"in"
+						"fakerestapi",
+						"azurewebsites"
 					 ],
 					 "path": [
 						 "api",
-						 "users?page2"
+						 "v1",
+						 "Authors"
 					 ]
  				}
  			},

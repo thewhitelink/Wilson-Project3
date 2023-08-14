@@ -91,6 +91,43 @@
 				}
 			},
 			"response": []
-		}
-	]
+		},
+        {
+            "name": "Delete Author",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "http://fakerestapi.azurewebsites.net/api/v1/Authors/{{id}}",
+                    "protocol": "http",
+                    "host": [
+                        "fakerestapi",
+                        "azurewebsites",
+                        "net"
+                    ],
+                    "path": [
+                        "api",
+                        "v1",
+                        "Authors",
+                        "{{id}}"
+                    ]
+                },
+                "description": "Delete an employee record"
+            },
+            "response": []
+        }
+    ]
 }
