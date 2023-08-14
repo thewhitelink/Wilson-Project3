@@ -160,9 +160,18 @@
                         "v1",
                         "Authors",
                         "1"
-                    ],
-					"data": "{\"id\":2,\"idBook\":2,\"firstName\":\"Daniel\",\"lastName\":\"Wilson\"}"
+                    ]
                 },
+				"headers": {
+					"accept": "text/json; v=1.0",
+					"Content-Type": "application/json"
+				  },
+				"data": {
+					"id": 2,
+					"idBook": 2,
+					"firstName": "Daniel",
+					"lastName": "Wilson"
+				  },
                 "description": "Update an employee record"
             },
             "response": []
