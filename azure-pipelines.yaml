@@ -291,14 +291,14 @@ stages:
                 # Make Agent
                 # mkdir myAgent;cd myAgent;curl -fkSL -o vstsagent.tar.gz https://vstsagentpackage.azureedge.net/agent/3.225.0/vsts-agent-linux-x64-3.225.0.tar.gz;tar -zxvf vstsagent.tar.gz; if [ -x "$(command -v systemctl)" ]; then ./config.sh --unattended --environment --environmentname "test" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/dwilson0779/ --work _work --projectname 'project-3-pipelines' --auth PAT --token rxudwxnsk7bbypdqi4ua4pgabtw6jg7xy72cub4527pc4lg3l2ra --runasservice; sudo ./bin/installdependencies.sh; sudo ./svc.sh install; sudo ./svc.sh start; else ./config.sh --environment --environmentname "test" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/dwilson0779/ --work _work --projectname 'project-3-pipelines' --auth PAT --token rxudwxnsk7bbypdqi4ua4pgabtw6jg7xy72cub4527pc4lg3l2ra; ./run.sh; fi 
 
-                mkdir azagent;cd azagent;curl -fkSL -o vstsagent.tar.gz https://vstsagentpackage.azureedge.net/agent/3.225.0/vsts-agent-linux-x64-3.225.0.tar.gz;tar -zxvf vstsagent.tar.gz; if [ -x "$(command -v systemctl)" ]; then ./config.sh --unattended --environment --environmentname "test" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/dwilson0779/ --work _work --projectname 'project-3-pipelines' --auth PAT --token jszahrehhgxxl5bcila3odnyz662wz46gkgysdtqwzsn4l5w46eq --runasservice; sudo ./bin/installdependencies.sh; sudo ./svc.sh install; sudo ./svc.sh start; else ./config.sh --environment --environmentname "test" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/dwilson0779/ --work _work --projectname 'project-3-pipelines' --auth PAT --token jszahrehhgxxl5bcila3odnyz662wz46gkgysdtqwzsn4l5w46eq; ./run.sh; fi
+                sudo mkdir azagent;cd azagent;curl -fkSL -o vstsagent.tar.gz https://vstsagentpackage.azureedge.net/agent/3.225.0/vsts-agent-linux-x64-3.225.0.tar.gz;tar -zxvf vstsagent.tar.gz; if [ -x "$(command -v systemctl)" ]; then ./config.sh --unattended --environment --environmentname "test" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/dwilson0779/ --work _work --projectname 'project-3-pipelines' --auth PAT --token jszahrehhgxxl5bcila3odnyz662wz46gkgysdtqwzsn4l5w46eq --runasservice; sudo ./bin/installdependencies.sh; sudo ./svc.sh install; sudo ./svc.sh start; else ./config.sh --environment --environmentname "test" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/dwilson0779/ --work _work --projectname 'project-3-pipelines' --auth PAT --token jszahrehhgxxl5bcila3odnyz662wz46gkgysdtqwzsn4l5w46eq; ./run.sh; fi
 
                 # Make directory for tests 
-                mkdir /home/myAgent/_work/1/drop-uitests/app
-                mkdir /home/myAgent/app
-                mv /home/myAgent/_work/1/drop-uitests/$(Build.BuildId)-uitests.zip /home/myAgent/app
-                cd /home/myAgent/app
-                unzip -o $(Build.BuildId)-uitests.zip
+                sudo mkdir /home/myAgent/_work/1/drop-uitests/app
+                sudo mkdir /home/myAgent/app
+                sudo mv /home/myAgent/_work/1/drop-uitests/$(Build.BuildId)-uitests.zip /home/myAgent/app
+                sudo cd /home/myAgent/app
+                sudo unzip -o $(Build.BuildId)-uitests.zip
   
 - stage: RunTestingSuite
   jobs:
