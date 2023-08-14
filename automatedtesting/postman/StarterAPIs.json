@@ -168,6 +168,7 @@
 					"FirstName":"Tua",
 					"LastName": "Tagovailoa"
 				},
+				"headers": {"Content-Type": "application/json"},
                 "description": "Update an employee record"
             },
             "response": []
