@@ -41,7 +41,8 @@
  					"protocol": "http",
 					 "host": [
 						"fakerestapi",
-						"azurewebsites"
+						"azurewebsites",
+						"net"
 					 ],
 					 "path": [
 						 "api",
