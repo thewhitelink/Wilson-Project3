@@ -88,8 +88,8 @@ stages:
         command: 'init'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
         backendServiceArm: '$(azureServiceConnectionId)'
-        backendAzureRmResourceGroupName: 'project3rg'
-        backendAzureRmStorageAccountName: 'sa129107626'
+        backendAzureRmResourceGroupName: 'project3'
+        backendAzureRmStorageAccountName: 'sa1780218823'
         backendAzureRmContainerName: 'container'
         backendAzureRmKey: 'test.terraform.tfstate'
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
