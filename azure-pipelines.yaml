@@ -32,7 +32,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          ls /home/_work/_temp/
+          ls /home/myAgent/_work/_temp/
     - task: TerraformInstaller@0
       displayName: Install Terraform
       inputs:
