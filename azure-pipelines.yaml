@@ -297,7 +297,7 @@ stages:
                 sudo mkdir /home/myAgent/_work/1/drop-uitests/app
                 sudo mkdir /home/myAgent/app
                 sudo mv /home/myAgent/_work/1/drop-uitests/$(Build.BuildId)-uitests.zip /home/myAgent/app
-                sudo cd /home/myAgent/app
+                cd /home/myAgent/app
                 sudo unzip -o $(Build.BuildId)-uitests.zip
   
 - stage: RunTestingSuite
