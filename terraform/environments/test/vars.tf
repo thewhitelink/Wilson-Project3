@@ -20,7 +20,7 @@ variable "location" {
 }
 variable "resource_group" {
     description = ""
-    default = "project3rg"
+    default = "project3"
 }
 variable "application_type" {
     description = ""
