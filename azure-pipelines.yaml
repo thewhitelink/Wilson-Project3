@@ -322,5 +322,5 @@ stages:
                   export PATH=$PATH:/home/myAgent/app/
                   cd /home/myAgent/app
                   echo "Starting Selenium Tests"
-                  python3 login.py >> selenium.log
+                  sudo python3 login.py >> selenium.log
                   echo "Completed Selenium Tests. Check selenium.log for results."
