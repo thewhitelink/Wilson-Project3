@@ -1,7 +1,7 @@
 # #!/usr/bin/env python
 import time
 import datetime
-#from selenium.webdriver.common.by import By
+from selenium.webdriver.common.by import By
 #from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 
