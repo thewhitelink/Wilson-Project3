@@ -37,8 +37,8 @@
  				"method": "GET",
  				"header": [],
  				"url": {
- 					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors",
- 					"protocol": "https",
+ 					"raw": "http://fakerestapi.azurewebsites.net/api/v1/Authors/",
+ 					"protocol": "http",
 					 "host": [
 						"fakerestapi",
 						"azurewebsites"
