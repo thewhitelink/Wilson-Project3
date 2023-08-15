@@ -185,7 +185,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive PerformanceTestSuite'
       inputs:
-        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/Starter.jmx'
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '/home/myAgent/_work/1/drop-perftests/$(Build.BuildId)-perftests.zip'
