@@ -231,10 +231,10 @@ stages:
                 unzip -o '/home/myAgent/_work/1/drop-perftests/$(Build.BuildId)-perftests.zip'
 
                 # Endurance Test
-                ./apache-jmeter-5.5/bin/jmeter -n -t testing/jmeter/EnduranceTest.jmx -l EnduranceTestResult.csv -e -f -o /home/myAgent/log/endurance -j /home/myAgent/log/endurance/endurance-test.log
+                ./apache-jmeter-5.5/bin/jmeter -n -t EnduranceTest.jmx -l EnduranceTestResult.csv -e -f -o /home/myAgent/log/endurance -j /home/myAgent/log/endurance/endurance-test.log
 
                 # Stress Test
-                ./apache-jmeter-5.5/bin/jmeter -n -t testing/jmeter/StressTest.jmx -l StressTestResult.csv -e -f -o /home/myAgent/log/stress -j /home/myAgent/log/stress/stress-test.log
+                ./apache-jmeter-5.5/bin/jmeter -n -t StressTest.jmx -l StressTestResult.csv -e -f -o /home/myAgent/log/stress -j /home/myAgent/log/stress/stress-test.log
 
               workingDirectory: $(Pipeline.Workspace)/s/automatedtesting/jmeter
          
