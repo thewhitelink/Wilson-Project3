@@ -219,13 +219,23 @@ stages:
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service
           - task: CmdLine@2
+            displayName: 'Jmeter Tests'
             inputs:
               script: |
-                wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz"
-                tar -xf apache-jmeter-5.5.tgz
+                sudo apt-get update -y
+                sudo apt-get install default-jre-headless -y
+                mkdir -p testing/jmeter
+                curl -O https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz
+                tar xzvf apache-jmeter-5.5.tgz
+
                 unzip -o '/home/myAgent/_work/1/drop-perftests/$(Build.BuildId)-perftests.zip'
-                ./apache-jmeter-5.5/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
-              #  cat jmeter.log  
+
+                # Endurance Test
+                ./apache-jmeter-5.5/bin/jmeter -n -t EnduranceTest.jmx -j jmeter.log
+
+                # Stress Test
+                ./apache-jmeter-5.5/bin/jmeter -n -t StressTest.jmx -j jmeter.log
+
               workingDirectory: $(Pipeline.Workspace)/s/automatedtesting/jmeter
          
 
